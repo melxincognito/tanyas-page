@@ -1,36 +1,22 @@
 import * as React from "react";
 import { ThemeProvider } from "@mui/material";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import { Routes, Route } from "react-router-dom";
+import AboutMePage from "./pages/AboutMePage";
+import HomePage from "./pages/HomePage";
+import MLSPage from "./pages/MLSPage";
 import theme from "./assets/theme";
+import Layout from "./components/navigation/Layout";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="primary"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              News
-            </Typography>
-            <Button color="inherit">Login</Button>
-          </Toolbar>
-        </AppBar>
-      </Box>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/aboutMe" element={<AboutMePage />} />
+          <Route path="/homeCatelog" element={<MLSPage />} />
+        </Routes>
+      </Layout>
     </ThemeProvider>
   );
 }
