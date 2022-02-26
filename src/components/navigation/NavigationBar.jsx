@@ -1,34 +1,250 @@
-import React, { Component } from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import * as React from "react";
+import { Link } from "react-router-dom";
 
-export default class NavigationBar extends Component {
-  render() {
-    return (
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
+import {
+  AppBar,
+  Box,
+  Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Container,
+  Tabs,
+  Tab,
+  MenuItem,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import { Twitter, LinkedIn, GitHub, Instagram } from "@mui/icons-material";
+
+const NavigationBar = () => {
+  // state variables
+
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+
+  const [value, setValue] = React.useState("one");
+
+  // handle event variables
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  // nav styles variables
+
+  const appBarStyles = {
+    bgcolor: "primary.main",
+    padding: 2,
+    boxShadow: "0 0.25rem 0.75rem rgba(0, 0, 0, 0.4)",
+    color: "secondary.light",
+  };
+
+  const tabsContainerStyles = {
+    flexGrow: 1,
+    alignContent: "center",
+    justifyContent: "center",
+    display: { xs: "none", md: "flex" },
+  };
+
+  const tabsStyles = {
+    bgcolor: "rgba(255, 255, 255, 0.35)",
+    borderRadius: 5,
+    pt: 1.3,
+    boxShadow: "0 0.25rem 0.75rem rgba(0, 0, 0, 0.4)",
+  };
+
+  const mobileTabStyle = {
+    display: "block",
+    width: "100%",
+    padding: "18px 20px",
+  };
+
+  const socialLinkStyles = {
+    p: 0.5,
+  };
+
+  // social link external page routes
+
+  function twitterPageClick() {
+    window.open("https://www.twitter.com/", "_blank");
+  }
+
+  function facebookPageClick() {
+    window.open("https://www.facebook.com/", "_blank");
+  }
+  function instagramPageClick() {
+    window.open("https://www.instagram.com", "_blank");
+  }
+
+  function linkedInPageClick() {
+    window.open("https://www.google.com/", "_blank");
+  }
+
+  return (
+    <AppBar position="static" sx={appBarStyles}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+          >
+            Tanya Gonzalez AZ Realtor
+          </Typography>
+
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
-              edge="start"
-              color="primary"
-              aria-label="menu"
-              sx={{ mr: 2 }}
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleOpenNavMenu}
+              color="inherit"
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              News
-            </Typography>
-            <Button color="inherit">Login</Button>
-          </Toolbar>
-        </AppBar>
-      </Box>
-    );
-  }
-}
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: "block", md: "none" },
+              }}
+            >
+              <Container
+                sx={{
+                  width: "20rem",
+                  height: "100%",
+                  display: "block",
+                  float: "left",
+                }}
+              >
+                <MenuItem component={Link} to="/" sx={mobileTabStyle}>
+                  <Typography textAlign="center">Home</Typography>
+                </MenuItem>
+                <MenuItem component={Link} to="/aboutMe" sx={mobileTabStyle}>
+                  <Typography textAlign="center">About Me</Typography>
+                </MenuItem>
+
+                <MenuItem
+                  component={Link}
+                  to="/homeCatelog"
+                  sx={mobileTabStyle}
+                >
+                  <Typography textAlign="center">Home Catelog</Typography>
+                </MenuItem>
+                <MenuItem
+                  component={Link}
+                  to="/homeBuyerTips"
+                  sx={mobileTabStyle}
+                >
+                  <Typography textAlign="center">
+                    First Time Home Buyer Tips
+                  </Typography>
+                </MenuItem>
+                <MenuItem component={Link} to="/contact" sx={mobileTabStyle}>
+                  <Typography textAlign="center">
+                    Phoenix Neighborhoods
+                  </Typography>
+                </MenuItem>
+                <MenuItem component={Link} to="/contact" sx={mobileTabStyle}>
+                  <Typography textAlign="center">Contact Me</Typography>
+                </MenuItem>
+              </Container>
+            </Menu>
+          </Box>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+          >
+            Tanya Gonzalez AZ Realtor
+          </Typography>
+          <Box sx={tabsContainerStyles}>
+            <Tabs
+              sx={tabsStyles}
+              value={value}
+              onChange={handleChange}
+              textColor="secondary"
+              indicatorColor="secondary"
+            >
+              <Tab value="one" label="Home" component={Link} to="/" />
+              <Tab
+                value="two"
+                label="About Me"
+                component={Link}
+                to="/aboutMe"
+              />
+
+              <Tab
+                value="three"
+                label="Phoenix Home Catelog"
+                component={Link}
+                to="/homeCatelog"
+              />
+              <Tab
+                value="four"
+                label="First time home buyer tips"
+                component={Link}
+                to="/homeBuyerTips"
+              />
+              <Tab
+                value="five"
+                label="Contact Me"
+                component={Link}
+                to="/contact"
+              />
+            </Tabs>
+          </Box>
+
+          <Box display="grid" sx={{ flexGrow: 0 }}>
+            <Box display="flex">
+              <Twitter
+                sx={socialLinkStyles}
+                fontSize="large"
+                onClick={twitterPageClick}
+              />
+              <FacebookIcon
+                sx={socialLinkStyles}
+                fontSize="large"
+                onClick={facebookPageClick}
+              />
+            </Box>
+            <Box>
+              <Instagram
+                sx={socialLinkStyles}
+                fontSize="large"
+                onClick={instagramPageClick}
+              />
+              <LinkedIn
+                sx={socialLinkStyles}
+                fontSize="large"
+                onClick={linkedInPageClick}
+              />
+            </Box>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
+  );
+};
+export default NavigationBar;
