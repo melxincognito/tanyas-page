@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import { Twitter, LinkedIn, GitHub, Instagram } from "@mui/icons-material";
+import { Twitter, LinkedIn, Instagram } from "@mui/icons-material";
 
 const NavigationBar = () => {
   // state variables
@@ -56,8 +56,7 @@ const NavigationBar = () => {
 
   const tabsStyles = {
     bgcolor: "rgba(255, 255, 255, 0.35)",
-    borderRadius: 5,
-    pt: 1.3,
+    borderRadius: 1,
     boxShadow: "0 0.25rem 0.75rem rgba(0, 0, 0, 0.4)",
   };
 
@@ -140,10 +139,16 @@ const NavigationBar = () => {
                 <MenuItem component={Link} to="/" sx={mobileTabStyle}>
                   <Typography textAlign="center">Home</Typography>
                 </MenuItem>
-                <MenuItem component={Link} to="/aboutMe" sx={mobileTabStyle}>
-                  <Typography textAlign="center">About Me</Typography>
-                </MenuItem>
 
+                <MenuItem
+                  component={Link}
+                  to="/neighborhoods"
+                  sx={mobileTabStyle}
+                >
+                  <Typography textAlign="center">
+                    Phoenix Neighborhoods
+                  </Typography>
+                </MenuItem>
                 <MenuItem
                   component={Link}
                   to="/homeCatelog"
@@ -160,11 +165,11 @@ const NavigationBar = () => {
                     First Time Home Buyer Tips
                   </Typography>
                 </MenuItem>
-                <MenuItem component={Link} to="/contact" sx={mobileTabStyle}>
-                  <Typography textAlign="center">
-                    Phoenix Neighborhoods
-                  </Typography>
+
+                <MenuItem component={Link} to="/aboutMe" sx={mobileTabStyle}>
+                  <Typography textAlign="center">About Me</Typography>
                 </MenuItem>
+
                 <MenuItem component={Link} to="/contact" sx={mobileTabStyle}>
                   <Typography textAlign="center">Contact Me</Typography>
                 </MenuItem>
@@ -188,13 +193,13 @@ const NavigationBar = () => {
               indicatorColor="secondary"
             >
               <Tab value="one" label="Home" component={Link} to="/" />
+
               <Tab
                 value="two"
-                label="About Me"
+                label="Phoenix Neighborhoods"
                 component={Link}
-                to="/aboutMe"
+                to="/neighborhoods"
               />
-
               <Tab
                 value="three"
                 label="Phoenix Home Catelog"
@@ -207,8 +212,15 @@ const NavigationBar = () => {
                 component={Link}
                 to="/homeBuyerTips"
               />
+
               <Tab
                 value="five"
+                label="About Me"
+                component={Link}
+                to="/aboutMe"
+              />
+              <Tab
+                value="six"
                 label="Contact Me"
                 component={Link}
                 to="/contact"
