@@ -2,6 +2,6 @@ import React, { Component } from "react";
 
 export default class HomePage extends Component {
   render() {
-    return <div>it's the long run</div>;
+    return <div>iHomePage</div>;
   }
 }
