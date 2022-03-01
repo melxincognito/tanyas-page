@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useRef } from "react";
-
+import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
 // form imports MUI
 import {
@@ -67,13 +67,13 @@ export default function ContactForm() {
   // form forward email functions
   const form = useRef();
 
-  /* const sendEmail = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        "service_8w10yxm",
-        "template_4e06fuy",
+        "service_7ttis48",
+        "template_i7g2cj8",
         form.current,
         "user_wKGjgdwvgNqEiJyejXWHN"
       )
@@ -82,7 +82,7 @@ export default function ContactForm() {
       })
       .catch((err) => console.log(err));
   };
- */
+
   // styles variables
   const cardStyles = {
     padding: 4,
@@ -121,7 +121,7 @@ export default function ContactForm() {
         </CardContent>
 
         <CardContent>
-          <form ref={form}>
+          <form ref={form} onSubmit={sendEmail}>
             <TextField
               fullWidth
               sx={textFieldStyles}

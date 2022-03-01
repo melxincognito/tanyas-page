@@ -77,14 +77,14 @@ const NavigationBar = () => {
   }
 
   function facebookPageClick() {
-    window.open("https://www.facebook.com/", "_blank");
+    window.open("https://www.facebook.com/TanyaSellsHomesFast", "_blank");
   }
   function instagramPageClick() {
-    window.open("https://www.instagram.com", "_blank");
+    window.open("https://www.instagram.com/listingsbytanya", "_blank");
   }
 
   function linkedInPageClick() {
-    window.open("https://www.google.com/", "_blank");
+    window.open("https://www.linkedin.com/", "_blank");
   }
 
   return (
