@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useRef } from "react";
 import emailjs from "emailjs-com";
 import { useNavigate } from "react-router-dom";
 // form imports MUI
@@ -16,14 +15,13 @@ import {
   DialogContentText,
   DialogTitle,
   Slide,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormControl,
+  FormLabel,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 
 // forms global variables
 const servicesOptions = [
@@ -65,7 +63,7 @@ export default function ContactForm() {
   };
 
   // form forward email functions
-  const form = useRef();
+  const form = React.useRef();
 
   const sendEmail = (e) => {
     e.preventDefault();
