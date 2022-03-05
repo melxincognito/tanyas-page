@@ -85,7 +85,7 @@ export default function ContactForm() {
   const cardStyles = {
     padding: 4,
     borderRadius: 5,
-    bgcolor: "secondary.dark",
+    bgcolor: "secondary.light",
     boxShadow: "0 0.25rem 0.75rem rgba(0, 0, 0, 0.4)",
   };
 
